@@ -1,6 +1,7 @@
 const sharp = require('sharp');
 const fileType = require('file-type');
 
+
 const supportedTypes = ['png', 'jpg'];
 
 class WebpWebpackPlugin {
@@ -11,20 +12,15 @@ class WebpWebpackPlugin {
 
   apply(compiler) {
     compiler.hooks.emit.tapPromise('WebpWebpackPlugin', async compilation => {
-      let assetsKeys = Object.keys(compilation.assets);
-
-      for (let i = 0, length = assetsKeys.length; i < length; i++ ) {
-        let key = assetsKeys[i];
-        let value = compilation.assets[assetsKeys[i]];
+      for (let [key, value] of Object.entries(compilation.assets)) {
         let valueBuffer = value._value;
         let data = null;
-
         let typeObj = null;
 
         try {
           typeObj = fileType(valueBuffer);
         } catch(error) {
-
+          continue;
         }
 
         if (!typeObj) {
@@ -41,6 +37,7 @@ class WebpWebpackPlugin {
           data = await sharp(valueBuffer).webp(this.webp).toBuffer();
         } catch(error) {
           console.error(error);
+          continue;
         }
 
         if (data.length >= valueBuffer.length) {
