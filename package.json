@@ -1,6 +1,6 @@
 {
-  "name": "webp-webpack-plugin",
-  "version": "1.0.0",
+  "name": "@jamais/webp-webpack-plugin",
+  "version": "0.0.3",
   "description": "Convert images to webp and keep the original file name.",
   "main": "./src/index.js",
   "scripts": {

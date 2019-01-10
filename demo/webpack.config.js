@@ -1,6 +1,6 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const WebpWebpackPlugin = require('../src/index.js');
+const WebpWebpackPlugin = require('@jamais/webp-webpack-plugin');
 
 module.exports = {
   mode: 'production',

@@ -14,7 +14,7 @@ Convert images to webp and keep the original file name.
 ## Usage
 
 ```bash
-npm install @JamaisMagic/webp-webpack-plugin
+npm install --save-dev @jamais/webp-webpack-plugin
 ```
 
 ```javascript
