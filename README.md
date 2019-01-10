@@ -21,6 +21,7 @@ In your webpack.config.js
 
 ```javascript
 const WebpWebpackPlugin = require('@jamais/webp-webpack-plugin');
+
 const options = {
   type: ['jpg', 'png'],
   webp: {
