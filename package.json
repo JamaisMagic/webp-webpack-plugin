@@ -21,10 +21,6 @@
     "url": "https://github.com/JamaisMagic/webp-webpack-plugin/issues"
   },
   "homepage": "https://github.com/JamaisMagic/webp-webpack-plugin#readme",
-  "devDependencies": {
-    "webpack": "^4.28.1",
-    "webpack-cli": "^3.2.1"
-  },
   "dependencies": {
     "file-type": "^10.7.0",
     "sharp": "^0.21.1"
