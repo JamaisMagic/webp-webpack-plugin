@@ -17,13 +17,16 @@ module.exports = {
           'file-loader',
           {
             loader: 'image-webpack-loader',
+            options: {
+              disabled: true
+            }
           },
         ]
       }
     ],
   },
   plugins: [
-    new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]),
+    new CleanWebpackPlugin([path.resolve(__dirname, 'dist/*')]),
     new WebpWebpackPlugin()
   ]
 };
