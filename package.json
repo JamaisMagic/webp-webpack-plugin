@@ -1,0 +1,28 @@
+{
+  "name": "webp-webpack-plugin",
+  "version": "1.0.0",
+  "description": "Convert images to webp and keep the original file name.",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamaisMagic/webp-webpack-plugin.git"
+  },
+  "keywords": [
+    "webp",
+    "webpack",
+    "webp-webpack-plugin"
+  ],
+  "author": "Jamais Ng <1350756140@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JamaisMagic/webp-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/JamaisMagic/webp-webpack-plugin#readme",
+  "devDependencies": {
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.2.1"
+  }
+}
