@@ -6,16 +6,42 @@ const supportedTypes = ['png', 'jpg'];
 
 class WebpWebpackPlugin {
   constructor(options={}) {
-    this.type = options.type || supportedTypes,
-    this.webp = options.webp || {};
+    this._type = options.type || [...supportedTypes],
+    this._webp = options.webp || {};
+
+    if (!Array.isArray(this._type)) {
+      this._type = [this._type + ''];
+    }
+
+    this._type = this._type.filter(item => {
+      return supportedTypes.includes(item);
+    });
+
+    if (this._type.length <= 0) {
+      this._type = [...supportedTypes];
+    }
   }
 
   apply(compiler) {
-    compiler.hooks.emit.tapPromise('WebpWebpackPlugin', async compilation => {
-      for (let [key, value] of Object.entries(compilation.assets)) {
-        let valueBuffer = value._value;
-        let data = null;
+    compiler.hooks.emit.tapPromise({
+      name: 'WebpWebpackPlugin',
+      context: true,
+    }, async (context, compilation) => {
+      const reportProgress = context && context.reportProgress;
+      const entries = Object.entries(compilation.assets);
+      const entriesLength = entries.length;
+      let index = 0;
+
+      for (let [key, value] of entries) {
+        let valueBuffer = value.source();
         let typeObj = null;
+        let data = null;
+
+        reportProgress && reportProgress(index++ / entriesLength, 'Finish progress');
+
+        if (!Buffer.isBuffer(valueBuffer)) {
+          continue;
+        }
 
         try {
           typeObj = fileType(valueBuffer);
@@ -29,19 +55,17 @@ class WebpWebpackPlugin {
 
         let ext = typeObj.ext;
 
-        if (!(supportedTypes.includes(ext) && this.type.includes(ext))) {
+        if (!this._type.includes(ext)) {
           continue;
         }
 
         try {
-          data = await sharp(valueBuffer).webp(this.webp).toBuffer();
+          data = await sharp(valueBuffer).webp(this._webp).toBuffer();
         } catch(error) {
-          console.error(error);
           continue;
         }
 
         if (data.length >= valueBuffer.length) {
-          console.warn('Converted image is larger than original image. Skip.', key);
           continue;
         }
 

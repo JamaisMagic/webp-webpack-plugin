@@ -10,6 +10,7 @@ Convert images to webp and keep the original file name.
 
 * Support and only support png and jpg images.
 * If converted file is bigger than original file, skip this file.
+* By default, it dosn't work on development mode.
 
 ## Usage
 

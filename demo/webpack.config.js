@@ -15,18 +15,20 @@ module.exports = {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              disabled: true
-            }
-          },
+          // {
+          //   loader: 'image-webpack-loader',
+          //   options: {
+          //     disabled: true
+          //   }
+          // },
         ]
       }
     ],
   },
   plugins: [
     new CleanWebpackPlugin([path.resolve(__dirname, 'dist/*')]),
-    new WebpWebpackPlugin()
+    new WebpWebpackPlugin({
+      type: ['jpg', 'gif']
+    })
   ]
 };
