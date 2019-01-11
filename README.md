@@ -1,7 +1,7 @@
 # webp-webpack-plugin
 Convert images to webp and keep the original file name.
 
-## Require
+## Requirements
 
 * node.js 8+
 * webpack 4+
@@ -46,5 +46,5 @@ module.exports = {
 Constructor parameters
 
 1. options Object
-  1. options.type String | Array, example, ['jpg', 'png'], 'png'
-  2. options.webp Object, referrer: [sharp](https://github.com/lovell/sharp)
+2. options.type \[String\] | \[Array\], default: ['jpg', 'png'], example: ['jpg', 'png'], 'png'
+3. options.webp \[Object\], default & referrer: [sharp](https://github.com/lovell/sharp)
