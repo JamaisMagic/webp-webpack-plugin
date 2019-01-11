@@ -31,11 +31,16 @@ const options = {
 };
 
 module.exports = {
+  mode: 'production',
   ...{'your-others': 'config'},
   plugins: [
     new WebpWebpackPlugin(options)
   ]
 };
+
+// output
+// [name].[hash].jpg
+// [name].[hash].jpg.webp
 ```
 
 Constructor parameters
