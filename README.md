@@ -10,7 +10,7 @@ Convert images to webp and keep the original file name.
 
 * Support and only support png and jpg images.
 * If converted file is bigger than original file, skip this file.
-* By default, it dosn't work on development mode.
+* Auto disabled in development mode.
 
 ## Usage
 
@@ -41,5 +41,5 @@ module.exports = {
 Constructor parameters
 
 1. options Object
-  1. options.type Array, example, ['jpg', 'png']
+  1. options.type String | Array, example, ['jpg', 'png'], 'png'
   2. options.webp Object, referrer: [sharp](https://github.com/lovell/sharp)

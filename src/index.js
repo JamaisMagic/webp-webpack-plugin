@@ -32,6 +32,10 @@ class WebpWebpackPlugin {
       const entriesLength = entries.length;
       let index = 0;
 
+      if (compiler.options.mode === 'development') {
+        return;
+      }
+
       for (let [key, value] of entries) {
         let valueBuffer = value.source();
         let typeObj = null;
