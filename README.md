@@ -32,7 +32,7 @@ const options = {
 
 module.exports = {
   mode: 'production',
-  ...{'your-others': 'config'},
+  ...{'your-other': 'configurations'},
   plugins: [
     new WebpWebpackPlugin(options)
   ]
@@ -48,3 +48,26 @@ Constructor parameters
 1. options Object
 2. options.type \[String\] | \[Array\], default: ['jpg', 'png'], example: ['jpg', 'png'], 'png'
 3. options.webp \[Object\], default & referrer: [sharp](https://github.com/lovell/sharp)
+
+## Setup
+
+In you nginx server, you can set up your configurations for example belows.
+```nginx
+http {
+  # You other configurations
+
+  map $http_accept $webp_suffix {
+    default   "";
+    "~*webp"  ".webp";
+  }
+
+  server {
+    # You other configurations
+
+    location ~* /img/.*\.(png|jpg|jpeg)$ {
+      add_header Vary Accept;
+      try_files $uri$webp_suffix $uri =404;
+    }
+  }
+}
+```
