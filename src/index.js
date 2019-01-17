@@ -3,11 +3,13 @@ const fileType = require('file-type');
 
 
 const supportedTypes = ['png', 'jpg'];
+const DEFAULT_MIN_LIMIT = 15360;
 
 class WebpWebpackPlugin {
   constructor(options={}) {
     this._type = options.type || [...supportedTypes],
     this._webp = options.webp || {};
+    this._min = Number.parseInt(options.min) || DEFAULT_MIN_LIMIT;
 
     if (!Array.isArray(this._type)) {
       this._type = [this._type + ''];
@@ -60,6 +62,10 @@ class WebpWebpackPlugin {
         let ext = typeObj.ext;
 
         if (!this._type.includes(ext)) {
+          continue;
+        }
+
+        if (valueBuffer.length <= this._min) {
           continue;
         }
 

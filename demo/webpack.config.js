@@ -28,7 +28,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin([path.resolve(__dirname, 'dist/*')]),
     new WebpWebpackPlugin({
-      type: ['jpg', 'gif']
+      type: ['jpg', 'gif'],
     })
   ]
 };
