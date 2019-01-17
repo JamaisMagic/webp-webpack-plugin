@@ -47,9 +47,10 @@ Constructor parameters
 
 1. options Object
 2. options.type \[String\] | \[Array\], default: ['jpg', 'png'], example: ['jpg', 'png'], 'png'
-3. options.webp \[Object\], default & referrer: [sharp](https://github.com/lovell/sharp)
+3. options.min \[Number\], image which smaller than that will be skipped. Default: 15360(15KB)
+4. options.webp \[Object\], default & referrer: [sharp](https://github.com/lovell/sharp)
 
-## Setup
+## Set up your server
 
 In you nginx server, you can set up your configurations for example belows.
 ```nginx
