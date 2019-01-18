@@ -47,7 +47,7 @@ Constructor parameters
 
 1. options Object
 2. options.type \[String\] | \[Array\], default: ['jpg', 'png'], example: ['jpg', 'png'], 'png'
-3. options.min \[Number\], image which smaller than that will be skipped. Default: 15360(15KB)
+3. options.min \[Number\], image which smaller than that will be skipped. Default: 8192(8KB)
 4. options.webp \[Object\], default & referrer: [sharp](https://github.com/lovell/sharp)
 
 ## Set up your server

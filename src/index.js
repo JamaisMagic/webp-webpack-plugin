@@ -3,7 +3,7 @@ const fileType = require('file-type');
 
 
 const supportedTypes = ['png', 'jpg'];
-const DEFAULT_MIN_LIMIT = 15360;
+const DEFAULT_MIN_LIMIT = 8192;
 
 class WebpWebpackPlugin {
   constructor(options={}) {
