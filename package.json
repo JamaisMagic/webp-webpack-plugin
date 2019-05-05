@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/JamaisMagic/webp-webpack-plugin#readme",
   "dependencies": {
-    "file-type": "^10.7.0",
-    "sharp": "^0.21.1"
+    "file-type": "^11.0.0",
+    "sharp": "^0.22.1"
   }
 }
