@@ -3,7 +3,7 @@ Convert images to webp and keep the original file name.
 
 ## Requirements
 
-* node.js 8+
+* node.js 10+
 * webpack 4+
 
 ## Features
