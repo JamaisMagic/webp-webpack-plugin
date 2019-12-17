@@ -25,11 +25,11 @@
   "homepage": "https://github.com/JamaisMagic/webp-webpack-plugin#readme",
   "devDependencies": {
     "@jamais/webp-webpack-plugin": "file:..",
-    "clean-webpack-plugin": "^1.0.0",
+    "clean-webpack-plugin": "^1.0.1",
     "file-loader": "^3.0.1",
     "image-webpack-loader": "^4.6.0",
-    "webpack": "^4.28.1",
-    "webpack-cli": "^3.2.1"
+    "webpack": "^4.41.3",
+    "webpack-cli": "^3.3.10"
   },
   "dependencies": {}
 }
