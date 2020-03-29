@@ -29,54 +29,53 @@ class WebpWebpackPlugin {
       name: 'WebpWebpackPlugin',
       context: true,
     }, async (context, compilation) => {
-      const reportProgress = context && context.reportProgress;
-      const entries = Object.entries(compilation.assets);
-      const entriesLength = entries.length;
-      let index = 0;
-
       if (compiler.options.mode === 'development') {
         return;
       }
 
-      for (let [key, value] of entries) {
-        let valueBuffer = value.source();
+      const that = this;
+      const entries = Object.entries(compilation.assets);
+
+      async function handle(key, value) {
+        if (!key || !value) {
+          return;
+        }
+        const valueBuffer = value.source();
         let typeObj = null;
         let data = null;
 
-        reportProgress && reportProgress(index++ / entriesLength, 'Finish progress');
-
         if (!Buffer.isBuffer(valueBuffer)) {
-          continue;
+          return;
         }
 
         try {
           typeObj = fileType(valueBuffer);
         } catch(error) {
-          continue;
+          return;
         }
 
         if (!typeObj) {
-          continue;
+          return;
         }
 
         let ext = typeObj.ext;
 
-        if (!this._type.includes(ext)) {
-          continue;
+        if (!that._type.includes(ext)) {
+          return;
         }
 
-        if (valueBuffer.length <= this._min) {
-          continue;
+        if (valueBuffer.length <= that._min) {
+          return;
         }
 
         try {
-          data = await sharp(valueBuffer).webp(this._webp).toBuffer();
+          data = await sharp(valueBuffer).webp(that._webp).toBuffer();
         } catch(error) {
-          continue;
+          return;
         }
 
         if (data.length >= valueBuffer.length) {
-          continue;
+          return;
         }
 
         compilation.assets[`${key}.webp`] = {
@@ -88,6 +87,17 @@ class WebpWebpackPlugin {
           }
         };
       }
+
+      async function consume() {
+        while (entries.length > 0) {
+          const yielded = entries.splice(0, 4);
+          await Promise.all(yielded.map(item => {
+            return handle(item[0], item[1]);
+          }));
+        }
+      }
+
+      await consume();
     });
   }
 }
