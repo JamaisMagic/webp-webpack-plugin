@@ -1,6 +1,6 @@
 {
   "name": "@jamais/webp-webpack-plugin",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Convert images to webp and keep the original file name.",
   "main": "./src/index.js",
   "scripts": {
@@ -23,6 +23,6 @@
   "homepage": "https://github.com/JamaisMagic/webp-webpack-plugin#readme",
   "dependencies": {
     "file-type": "^12.4.0",
-    "sharp": "^0.23.4"
+    "sharp": "^0.25.2"
   }
 }
