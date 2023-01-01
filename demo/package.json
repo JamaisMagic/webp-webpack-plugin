@@ -26,10 +26,10 @@
   "devDependencies": {
     "@jamais/webp-webpack-plugin": "file:..",
     "clean-webpack-plugin": "^1.0.1",
-    "file-loader": "^3.0.1",
-    "image-webpack-loader": "^4.6.0",
-    "webpack": "^4.41.3",
-    "webpack-cli": "^3.3.10"
+    "file-loader": "^6.2.0",
+    "image-webpack-loader": "^8.1.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "dependencies": {}
 }
