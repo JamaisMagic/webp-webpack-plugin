@@ -3,14 +3,16 @@ Convert images to webp and keep the original file name.
 
 ## Requirements
 
-* node.js 10+
-* webpack 4+
+* node.js 14+
+* webpack 5+
+* If you are using webpack 4, you may check out the previous version: [0.0.8](https://www.npmjs.com/package/@jamais/webp-webpack-plugin/v/0.0.8).
 
 ## Features
 
 * Support and only support png and jpg images.
 * If converted file is bigger than original file, skip this file.
 * Auto disabled in development mode.
+* Support ES Module.
 
 ## Usage
 
@@ -18,10 +20,10 @@ Convert images to webp and keep the original file name.
 npm install --save-dev @jamais/webp-webpack-plugin
 ```
 
-In your webpack.config.js
+In webpack.config.js
 
 ```javascript
-const WebpWebpackPlugin = require('@jamais/webp-webpack-plugin');
+import WebpWebpackPlugin from '@jamais/webp-webpack-plugin';
 
 const options = {
   type: ['jpg', 'png'],
@@ -30,9 +32,9 @@ const options = {
   }
 };
 
-module.exports = {
+export default {
   mode: 'production',
-  ...{'your-other': 'configurations'},
+  ...{'Other': 'configurations'},
   plugins: [
     new WebpWebpackPlugin(options)
   ]
@@ -50,12 +52,12 @@ Constructor parameters
 3. options.min \[Number\], image which smaller than that will be skipped. Default: 8192(8KB)
 4. options.webp \[Object\], default & referrer: [sharp](https://github.com/lovell/sharp)
 
-## Set up your server
+## Setup the server
 
-In you nginx server, you can set up your configurations for example belows.
+In nginx server, you can setup the configurations for example belows.
 ```nginx
 http {
-  # You other configurations
+  # Other configurations
 
   map $http_accept $webp_suffix {
     default   "";
@@ -63,7 +65,7 @@ http {
   }
 
   server {
-    # You other configurations
+    # Other configurations
 
     location ~* /img/.*\.(png|jpg|jpeg)$ {
       add_header Vary Accept;
