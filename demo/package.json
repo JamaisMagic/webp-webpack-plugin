@@ -1,6 +1,6 @@
 {
   "name": "webp-webpack-plugin-demo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Convert images to webp and keep the original file name.",
   "private": true,
   "main": "./index.js",
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/JamaisMagic/webp-webpack-plugin#readme",
   "devDependencies": {
-    "@jamais/webp-webpack-plugin": "file:..",
-  },
-  "dependencies": {}
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
 }
