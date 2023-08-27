@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Convert images to webp and keep the original file name.",
   "main": "./src/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

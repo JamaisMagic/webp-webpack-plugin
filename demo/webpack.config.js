@@ -1,7 +1,11 @@
-const path = require('path');
-const WebpWebpackPlugin = require('@jamais/webp-webpack-plugin');
+import path from 'node:path';
+import url from 'node:url';
+import WebpWebpackPlugin from '@jamais/webp-webpack-plugin';
 
-module.exports = {
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
+export default {
   mode: 'production',
   entry: './index.js',
   output: {

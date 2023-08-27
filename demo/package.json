@@ -4,6 +4,7 @@
   "description": "Convert images to webp and keep the original file name.",
   "private": true,
   "main": "./index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress"
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/JamaisMagic/webp-webpack-plugin#readme",
   "devDependencies": {
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "@jamais/webp-webpack-plugin": "0.1.0"
   }
 }
