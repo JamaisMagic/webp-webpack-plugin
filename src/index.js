@@ -1,5 +1,5 @@
-const sharp = require('sharp');
-const fileType = require('file-type');
+import sharp from 'sharp';
+import { fileTypeFromBuffer } from 'file-type';
 
 
 const supportedTypes = ['png', 'jpg'];
@@ -49,7 +49,7 @@ class WebpWebpackPlugin {
         }
 
         try {
-          typeObj = fileType(valueBuffer);
+          typeObj = await fileTypeFromBuffer(valueBuffer);
         } catch(error) {
           return;
         }
@@ -102,4 +102,4 @@ class WebpWebpackPlugin {
   }
 }
 
-module.exports = WebpWebpackPlugin;
+export default WebpWebpackPlugin;
