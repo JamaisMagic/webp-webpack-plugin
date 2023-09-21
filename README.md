@@ -1,4 +1,5 @@
 # webp-webpack-plugin
+
 Convert images to webp and keep the original file name.
 
 ## Requirements
@@ -74,3 +75,49 @@ http {
   }
 }
 ```
+
+## If you prefer client side detection, checkout these steps for referrers
+
+In html, use picture tag.
+
+```html
+<picture>
+  <source srcset="/path/to/image.webp" type="image/webp">
+  <img src="/path/to/image.jpg" alt="insert alt text here">
+</picture>
+```
+
+In css, use @supports
+
+```css
+.logo-container {
+  background-image: url('logo.jpg');
+
+  @supports (background-image: url('logo.webp')) {
+    background-image: url('logo.webp');
+  }
+}
+```
+
+In javascript and dom, use canvas's toDataURL method or use Image to load a webp image.
+
+```javascript
+const supportWebP = e => document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0;
+
+// Or
+function supportsWebP() {
+  var img = new Image();
+  img.onload = function() {
+    return img.width === 2;
+  };
+  img.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+  return img.onload;
+}
+```
+
+Misc:
+
+Checkout what [Modernizr](https://github.com/Modernizr/Modernizr/blob/400db4043c22af98d46e1d2b9cbc5cb062791192/feature-detects/img/webp.js) did from github.
+[Detect WebP browser support](https://inside.caratlane.com/detect-webp-browser-support-e1063f019b17)
+[check-webp-support.js](https://gist.github.com/tlacroix/c59e3c6835064d8febe832d87574ff0e)
+[CSS Fallbacks for WebP background images with @supports](https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/)
