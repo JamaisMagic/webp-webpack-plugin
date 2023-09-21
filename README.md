@@ -76,7 +76,7 @@ http {
 }
 ```
 
-## If you prefer client side detection, checkout these steps for referrers
+## If you prefer client side detection, checkout these steps for references
 
 In html, use picture tag.
 
