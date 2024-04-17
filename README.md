@@ -27,6 +27,7 @@ In webpack.config.js
 import WebpWebpackPlugin from '@jamais/webp-webpack-plugin';
 
 const options = {
+  skipDev: true, // Defaults true, if you want to build webp in development mode, set it false.
   type: ['jpg', 'png'],
   webp: {
     quality: 75
@@ -49,9 +50,10 @@ export default {
 Constructor parameters
 
 1. options Object
-2. options.type \[String\] | \[Array\], default: ['jpg', 'png'], example: ['jpg', 'png'], 'png'
-3. options.min \[Number\], image which smaller than that will be skipped. Default: 8192(8KB)
-4. options.webp \[Object\], default & referrer: [sharp](https://github.com/lovell/sharp)
+2. options.skipDev \[Boolean\], default: true
+3. options.type \[String\] | \[Array\], default: ['jpg', 'png'], example: ['jpg', 'png'], 'png'
+4. options.min \[Number\], image which smaller than that will be skipped. Default: 8192(8KB)
+5. options.webp \[Object\], default & referrer: [sharp](https://github.com/lovell/sharp)
 
 ## Setup the server
 
