@@ -6,7 +6,7 @@ const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 export default {
-  mode: 'production',
+  mode: 'development',
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -23,6 +23,7 @@ export default {
   },
   plugins: [
     new WebpWebpackPlugin({
+      skipDev: false,
       type: ['jpg', 'gif'],
     })
   ]
