@@ -4,12 +4,14 @@ import { fileTypeFromBuffer } from 'file-type';
 
 const supportedTypes = ['png', 'jpg'];
 const DEFAULT_MIN_LIMIT = 8192;
+const SKIP_DEV = true;
 
 class WebpWebpackPlugin {
   constructor(options={}) {
     this._type = options.type || [...supportedTypes],
     this._webp = options.webp || {};
     this._min = Number.parseInt(options.min) || DEFAULT_MIN_LIMIT;
+    this._skipDev = options.skipDev === false ? false : SKIP_DEV;
 
     if (!Array.isArray(this._type)) {
       this._type = [this._type + ''];
@@ -29,11 +31,12 @@ class WebpWebpackPlugin {
       name: 'WebpWebpackPlugin',
       context: true,
     }, async (context, compilation) => {
-      if (compiler.options.mode === 'development') {
+      const that = this;
+
+      if (compiler.options.mode === 'development' && that._skipDev === SKIP_DEV) {
         return;
       }
 
-      const that = this;
       const entries = Object.entries(compilation.assets);
 
       async function handle(key, value) {
